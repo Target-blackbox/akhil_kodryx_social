@@ -358,50 +358,52 @@ const FeaturesTimeline = ({ isLoaded, activePlatform, setActivePlatform, onSignu
                     <Skeleton className="h-[88px] w-[500px] rounded-[44px]" />
                 ) : (
                     <div className="relative inline-flex flex-wrap justify-center gap-3 p-3 bg-white/40 backdrop-blur-3xl border border-black/5 rounded-[44px] shadow-[0_8px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] transition-shadow duration-300">
-                        {platformData.map((platform) => {
-                            const isActive = activePlatform === platform.name
-                            return (
-                                <button
-                                    key={platform.name}
-                                    onClick={() => {
-                                        setActivePlatform(platform.name)
-                                        // Scroll strategy - simple scroll to top of section
-                                        const el = document.getElementById('features')
-                                        if (el) {
-                                            const y = el.getBoundingClientRect().top + window.scrollY - 100
-                                            window.scrollTo({ top: y, behavior: 'smooth' })
-                                        }
-                                    }}
-                                    className="relative group px-8 py-3.5 rounded-[32px] outline-none transition-all duration-300"
-                                >
-                                    {isActive && (
-                                        <motion.div
-                                            layoutId="bottom-active-pill"
-                                            className="absolute inset-0 bg-white shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-black/5 rounded-[32px]"
-                                            transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                                        />
-                                    )}
-
-                                    <div className="relative z-10 flex items-center gap-4">
-                                        <div className={`w-10 h-10 rounded-[18px] flex items-center justify-center transition-all duration-300 ${isActive ? 'shadow-md scale-105' : 'opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0'
-                                            }`}
-                                            style={{
-                                                background: isActive ? `linear-gradient(135deg, ${platform.color}, ${platform.color}dd)` : 'rgba(0,0,0,0.03)',
-                                            }}>
-                                            <IconSvg
-                                                type={platform.icon}
-                                                className="w-5 h-5"
-                                                color={isActive ? '#ffffff' : '#000000'}
+                        {platformData
+                            .filter(platform => platform.name !== activePlatform)
+                            .map((platform) => {
+                                const isActive = false // Never active since we filtered it
+                                return (
+                                    <button
+                                        key={platform.name}
+                                        onClick={() => {
+                                            setActivePlatform(platform.name)
+                                            // Scroll strategy - simple scroll to top of section
+                                            const el = document.getElementById('features')
+                                            if (el) {
+                                                const y = el.getBoundingClientRect().top + window.scrollY - 100
+                                                window.scrollTo({ top: y, behavior: 'smooth' })
+                                            }
+                                        }}
+                                        className="relative group px-8 py-3.5 rounded-[32px] outline-none transition-all duration-300 hover:bg-white/50"
+                                    >
+                                        {isActive && (
+                                            <motion.div
+                                                layoutId="bottom-active-pill"
+                                                className="absolute inset-0 bg-white shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-black/5 rounded-[32px]"
+                                                transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                                             />
+                                        )}
+
+                                        <div className="relative z-10 flex items-center gap-4">
+                                            <div className={`w-10 h-10 rounded-[18px] flex items-center justify-center transition-all duration-300 ${isActive ? 'shadow-md scale-105' : 'opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0'
+                                                }`}
+                                                style={{
+                                                    background: isActive ? `linear-gradient(135deg, ${platform.color}, ${platform.color}dd)` : 'rgba(0,0,0,0.03)',
+                                                }}>
+                                                <IconSvg
+                                                    type={platform.icon}
+                                                    className="w-5 h-5"
+                                                    color={isActive ? '#ffffff' : '#000000'}
+                                                />
+                                            </div>
+                                            <span className={`text-[16px] font-bold tracking-tight transition-all duration-300 ${isActive ? 'text-black' : 'text-black/30 group-hover:text-black/60'
+                                                }`}>
+                                                {platform.name}
+                                            </span>
                                         </div>
-                                        <span className={`text-[16px] font-bold tracking-tight transition-all duration-300 ${isActive ? 'text-black' : 'text-black/30 group-hover:text-black/60'
-                                            }`}>
-                                            {platform.name}
-                                        </span>
-                                    </div>
-                                </button>
-                            )
-                        })}
+                                    </button>
+                                )
+                            })}
                     </div>
                 )}
             </div>
