@@ -1,6 +1,7 @@
 import { motion, useInView, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion'
 import { useRef } from 'react'
 import Skeleton from './Skeleton'
+import { platformData, IconSvg } from './PlatformSections'
 
 const platformFeatures = {
     'WhatsApp': [
@@ -244,7 +245,7 @@ const ComingSoon = ({ platform }) => {
     )
 }
 
-const FeaturesTimeline = ({ isLoaded, activePlatform, onSignup }) => {
+const FeaturesTimeline = ({ isLoaded, activePlatform, setActivePlatform, onSignup }) => {
     const containerRef = useRef(null)
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -285,7 +286,7 @@ const FeaturesTimeline = ({ isLoaded, activePlatform, onSignup }) => {
                         transition={{ duration: 0.5 }}
                     >
                         {/* Dynamic Guiding Line */}
-                        <div className="absolute left-1/2 top-[440px] bottom-[180px] w-[3px] -translate-x-1/2 hidden md:block z-10">
+                        <div className="absolute left-1/2 top-[440px] bottom-[360px] w-[3px] -translate-x-1/2 hidden md:block z-10">
                             {/* Background Track */}
                             <div className="absolute inset-0 bg-[#F4F4F4] rounded-full" />
                             {/* Active Filling Line */}
@@ -350,6 +351,60 @@ const FeaturesTimeline = ({ isLoaded, activePlatform, onSignup }) => {
                     <ComingSoon key={activePlatform} platform={activePlatform} />
                 )}
             </AnimatePresence>
+
+            {/* Bottom Platform Selector */}
+            <div className="relative z-10 mt-24 max-w-[1440px] mx-auto px-6 pb-4 flex justify-center">
+                {!isLoaded ? (
+                    <Skeleton className="h-[88px] w-[500px] rounded-[44px]" />
+                ) : (
+                    <div className="relative inline-flex flex-wrap justify-center gap-3 p-3 bg-white/40 backdrop-blur-3xl border border-black/5 rounded-[44px] shadow-[0_8px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] transition-shadow duration-300">
+                        {platformData.map((platform) => {
+                            const isActive = activePlatform === platform.name
+                            return (
+                                <button
+                                    key={platform.name}
+                                    onClick={() => {
+                                        setActivePlatform(platform.name)
+                                        // Scroll strategy - simple scroll to top of section
+                                        const el = document.getElementById('features')
+                                        if (el) {
+                                            const y = el.getBoundingClientRect().top + window.scrollY - 100
+                                            window.scrollTo({ top: y, behavior: 'smooth' })
+                                        }
+                                    }}
+                                    className="relative group px-8 py-3.5 rounded-[32px] outline-none transition-all duration-300"
+                                >
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="bottom-active-pill"
+                                            className="absolute inset-0 bg-white shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-black/5 rounded-[32px]"
+                                            transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                                        />
+                                    )}
+
+                                    <div className="relative z-10 flex items-center gap-4">
+                                        <div className={`w-10 h-10 rounded-[18px] flex items-center justify-center transition-all duration-300 ${isActive ? 'shadow-md scale-105' : 'opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0'
+                                            }`}
+                                            style={{
+                                                background: isActive ? `linear-gradient(135deg, ${platform.color}, ${platform.color}dd)` : 'rgba(0,0,0,0.03)',
+                                            }}>
+                                            <IconSvg
+                                                type={platform.icon}
+                                                className="w-5 h-5"
+                                                color={isActive ? '#ffffff' : '#000000'}
+                                            />
+                                        </div>
+                                        <span className={`text-[16px] font-bold tracking-tight transition-all duration-300 ${isActive ? 'text-black' : 'text-black/30 group-hover:text-black/60'
+                                            }`}>
+                                            {platform.name}
+                                        </span>
+                                    </div>
+                                </button>
+                            )
+                        })}
+                    </div>
+                )}
+            </div>
         </section>
     )
 }

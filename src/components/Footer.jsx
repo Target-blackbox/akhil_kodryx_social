@@ -62,7 +62,7 @@ const Footer = ({ isLoaded }) => {
                                         <Skeleton className="h-4 w-16" />
                                     </>
                                 ) : (
-                                    ['Home', 'Features', 'How it works', 'Pricing'].map((item) => (
+                                    ['Home', 'Features', 'How it works'].map((item) => (
                                         <a
                                             key={item}
                                             href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}

@@ -39,9 +39,9 @@ function App() {
 
     return (
         <div className="min-h-screen bg-white">
-            <Header isLoaded={isLoaded} onLogin={() => handleSetView('login')} onSignup={() => handleSetView('signup')} />
+            <Header isLoaded={isLoaded} onLogin={() => handleSetView('login')} onSignup={() => handleSetView('login')} />
             <main className="relative">
-                <Hero isLoaded={isLoaded} setIsLoaded={setIsLoaded} onSignup={() => handleSetView('signup')} setActivePlatform={setActivePlatform} />
+                <Hero isLoaded={isLoaded} setIsLoaded={setIsLoaded} onSignup={() => handleSetView('login')} setActivePlatform={setActivePlatform} />
                 <PlatformSections
                     isLoaded={isLoaded}
                     activePlatform={activePlatform}
@@ -50,12 +50,13 @@ function App() {
                 <FeaturesTimeline
                     isLoaded={isLoaded}
                     activePlatform={activePlatform}
-                    onSignup={() => handleSetView('signup')}
+                    setActivePlatform={setActivePlatform}
+                    onSignup={() => handleSetView('login')}
                 />
-                <Pricing
+                {/* <Pricing
                     isLoaded={isLoaded}
-                    onSignup={() => handleSetView('signup')}
-                />
+                    onSignup={() => handleSetView('login')}
+                /> */}
             </main>
             <Footer isLoaded={isLoaded} />
         </div>

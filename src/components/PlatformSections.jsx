@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import Skeleton from './Skeleton'
 
-const platformData = [
+export const platformData = [
     {
         name: 'WhatsApp',
         color: '#03543F', // Deep Forest Green
@@ -28,7 +28,7 @@ const platformData = [
     },
 ]
 
-const IconSvg = ({ type, className = '', color = 'currentColor' }) => {
+export const IconSvg = ({ type, className = '', color = 'currentColor' }) => {
     switch (type) {
         case 'whatsapp':
             return (

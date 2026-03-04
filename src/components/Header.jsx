@@ -51,7 +51,7 @@ const Header = ({ isLoaded, onLogin, onSignup }) => {
                             </div>
                         ) : (
                             <>
-                                {['Home', 'Features', 'How it Works', 'Pricing'].map((item, index) => (
+                                {['Home', 'Features', 'How it Works'].map((item, index) => (
                                     <a
                                         key={item}
                                         href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
