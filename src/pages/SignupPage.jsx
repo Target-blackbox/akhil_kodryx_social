@@ -44,7 +44,7 @@ const SignupPage = ({ onBack, isLoaded, setIsLoaded, onLogin }) => {
                             <Skeleton className="h-20 w-48 rounded-2xl" />
                         ) : (
                             <img
-                                src="/kodryx.png"
+                                src="/kodryx.webp"
                                 alt="Kodryx"
                                 className="h-28 w-auto object-contain"
                                 onLoad={() => setIsLoaded(true)}

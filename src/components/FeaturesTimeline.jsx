@@ -8,7 +8,7 @@ const platformFeatures = {
         {
             title: 'Single file forwarding',
             description: 'Send PDF, images, or documents via WhatsApp instantly. Perfect for invoices, reports, and confirmations. Reach your customers where they are most active.',
-            image: '/whatsapp image_website.png',
+            image: '/whatsapp image_website.webp',
             color: 'transparent',
             blob: 'bg-blob-green',
             accent: '#037312',
@@ -17,7 +17,7 @@ const platformFeatures = {
         {
             title: 'Bulk WhatsApp Messaging',
             description: 'Send messages to multiple contacts using Excel/CSV. Ideal for marketing campaigns, newsletters, and announcements. Scale your outreach effortlessly.',
-            image: '/bulk_messages.png',
+            image: '/bulk_messages.webp',
             color: 'transparent',
             blob: 'bg-blob-pink',
             accent: '#C62828',
@@ -26,7 +26,7 @@ const platformFeatures = {
         {
             title: 'Auto-Reply Chatbot',
             description: 'Automatically respond to incoming messages with keyword-based rules. Great for FAQs, lead qualifying, and 24/7 customer support.',
-            image: '/auto_reply chatbot.png',
+            image: '/auto_reply chatbot.webp',
             color: 'transparent',
             blob: 'bg-blob-blue',
             accent: '#004CFD',
@@ -38,7 +38,7 @@ const platformFeatures = {
         {
             title: 'Comment Automation',
             description: 'Reply to comments and send a DM to engage your followers. Boost participation and turn casual scrolls into meaningful conversations.',
-            image: '/insta_comment.jpg',
+            image: '/insta_comment.webp',
             color: 'transparent',
             blob: 'bg-blob-pink',
             accent: '#E1306C',
@@ -47,7 +47,7 @@ const platformFeatures = {
         {
             title: 'Story Automation',
             description: 'Auto respond to story replies and reactions. Engage with your audience exactly when they show interest in your disappearing content.',
-            image: '/insta_story.png',
+            image: '/insta_story.webp',
             color: 'transparent',
             blob: 'bg-blob-blue',
             accent: '#5851DB',
@@ -56,7 +56,7 @@ const platformFeatures = {
         {
             title: 'Live Automation',
             description: 'Send a message to followers who are active during lives. Capitalize on the energy of real-time broadcasting to build deeper connections.',
-            image: '/insta_live_trial.png',
+            image: '/insta_live_trial.webp',
             color: 'transparent',
             blob: 'bg-blob-green',
             accent: '#833AB4',
@@ -65,7 +65,7 @@ const platformFeatures = {
         {
             title: 'DM Automation',
             description: 'Automatically reply to the followers who messages you. Provide instant value and support to every direct inquiry, 24/7.',
-            image: '/insta_dm.jpg',
+            image: '/insta_dm.webp',
             color: 'transparent',
             blob: 'bg-blob-pink',
             accent: '#FD1D1D',

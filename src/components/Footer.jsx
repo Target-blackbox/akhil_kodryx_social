@@ -12,7 +12,7 @@ const Footer = ({ isLoaded }) => {
                                 <Skeleton className="h-[86px] w-[200px]" />
                             ) : (
                                 <a href="#home" className="block outline-none">
-                                    <img src="/kodryx.png" alt="Kodrix" className="h-[86px] w-auto object-contain transition-transform hover:scale-105" />
+                                    <img src="/kodryx.webp" alt="Kodrix" className="h-[86px] w-auto object-contain transition-transform hover:scale-105" />
                                 </a>
                             )}
                         </div>

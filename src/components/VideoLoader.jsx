@@ -15,7 +15,7 @@ export default function VideoLoader({ onEnded }) {
             className={`fixed inset-0 z-[9999] flex items-center justify-center bg-white transition-opacity duration-500 ease-in-out ${isFading ? 'opacity-0' : 'opacity-100'}`}
         >
             <video
-                src="/kodryx ai_animation.mp4"
+                src="/kodryx_ai_animation.webm"
                 autoPlay
                 muted
                 playsInline

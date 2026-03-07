@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import PlatformSections from './components/PlatformSections'
-import FeaturesTimeline from './components/FeaturesTimeline'
-import Pricing from './components/Pricing'
-import Footer from './components/Footer'
+const PlatformSections = React.lazy(() => import('./components/PlatformSections'))
+const FeaturesTimeline = React.lazy(() => import('./components/FeaturesTimeline'))
+const Pricing = React.lazy(() => import('./components/Pricing'))
+const Footer = React.lazy(() => import('./components/Footer'))
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import VideoLoader from './components/VideoLoader'
@@ -54,23 +54,27 @@ function App() {
             <Header isLoaded={isLoaded} onLogin={() => handleSetView('login')} onSignup={() => handleSetView('login')} />
             <main className="relative">
                 <Hero isLoaded={isLoaded} setIsLoaded={setIsLoaded} onSignup={() => handleSetView('login')} setActivePlatform={setActivePlatform} />
-                <PlatformSections
-                    isLoaded={isLoaded}
-                    activePlatform={activePlatform}
-                    setActivePlatform={setActivePlatform}
-                />
-                <FeaturesTimeline
-                    isLoaded={isLoaded}
-                    activePlatform={activePlatform}
-                    setActivePlatform={setActivePlatform}
-                    onSignup={() => handleSetView('login')}
-                />
-                {/* <Pricing
-                    isLoaded={isLoaded}
-                    onSignup={() => handleSetView('login')}
-                /> */}
+                <Suspense fallback={<div className="min-h-screen bg-white" />}>
+                    <PlatformSections
+                        isLoaded={isLoaded}
+                        activePlatform={activePlatform}
+                        setActivePlatform={setActivePlatform}
+                    />
+                    <FeaturesTimeline
+                        isLoaded={isLoaded}
+                        activePlatform={activePlatform}
+                        setActivePlatform={setActivePlatform}
+                        onSignup={() => handleSetView('login')}
+                    />
+                    {/* <Pricing
+                        isLoaded={isLoaded}
+                        onSignup={() => handleSetView('login')}
+                    /> */}
+                </Suspense>
             </main>
-            <Footer isLoaded={isLoaded} />
+            <Suspense fallback={null}>
+                <Footer isLoaded={isLoaded} />
+            </Suspense>
         </div>
     )
 }

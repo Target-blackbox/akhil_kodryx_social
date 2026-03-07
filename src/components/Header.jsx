@@ -29,7 +29,7 @@ const Header = ({ isLoaded, onLogin, onSignup }) => {
                         ) : (
                             <a href="#home" className="block outline-none">
                                 <img
-                                    src="/kodryx.png"
+                                    src="/kodryx.webp"
                                     alt="Kodrix"
                                     className="h-[60px] w-auto object-contain transition-transform hover:scale-105"
                                 />

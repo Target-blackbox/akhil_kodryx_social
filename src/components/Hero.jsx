@@ -210,7 +210,7 @@ const Hero = ({ isLoaded, setIsLoaded, onSignup, setActivePlatform }) => {
 
                         <div className="relative w-full max-w-[720px]">
                             <img
-                                src="/hero_section_image.png"
+                                src="/hero_section_image.webp"
                                 alt="Kodrix AI - Automate Conversations"
                                 onLoad={() => setTimeout(() => setIsLoaded(true), 2000)}
                                 className={`w-full h-auto object-contain transform translate-y-14 transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
