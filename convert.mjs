@@ -1,12 +1,12 @@
 import sharp from 'sharp';
 import fs from 'fs';
 
-const files = ['public/insta_comment.jpg', 'public/insta_dm.jpg', 'public/insta_live.jpg'];
+const files = ['public/insta_comment.png', 'public/insta_dm.png', 'public/insta_live.png'];
 
 async function convert() {
     for (const file of files) {
         if (fs.existsSync(file)) {
-            const output = file.replace('.jpg', '.webp');
+            const output = file.replace('.png', '.webp');
             await sharp(file).webp().toFile(output);
             console.log(`Converted ${file} to ${output}`);
         } else {
