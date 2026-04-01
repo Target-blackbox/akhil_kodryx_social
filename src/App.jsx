@@ -7,15 +7,11 @@ const Pricing = React.lazy(() => import('./components/Pricing'))
 const Footer = React.lazy(() => import('./components/Footer'))
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
-import VideoLoader from './components/VideoLoader'
 
 function App() {
     const [scrolled, setScrolled] = useState(false)
     const [activePlatform, setActivePlatform] = useState('WhatsApp')
     const [isLoaded, setIsLoaded] = useState(false)
-    const [showVideo, setShowVideo] = useState(() => {
-        return !sessionStorage.getItem('kodryx_has_seen_animation')
-    })
     // Persist view state across reloads
     const [view, setView] = useState(() => {
         return localStorage.getItem('kodryx_view') || 'main'
@@ -42,15 +38,7 @@ function App() {
     }
 
     return (
-        <div className={`min-h-screen bg-white ${showVideo ? 'h-screen overflow-hidden' : ''}`}>
-            {showVideo && (
-                <VideoLoader
-                    onEnded={() => {
-                        setShowVideo(false);
-                        sessionStorage.setItem('kodryx_has_seen_animation', 'true');
-                    }}
-                />
-            )}
+        <div className="min-h-screen bg-white">
             <Header isLoaded={isLoaded} onLogin={() => handleSetView('login')} onSignup={() => handleSetView('login')} />
             <main className="relative">
                 <Hero isLoaded={isLoaded} setIsLoaded={setIsLoaded} onSignup={() => handleSetView('login')} setActivePlatform={setActivePlatform} />
