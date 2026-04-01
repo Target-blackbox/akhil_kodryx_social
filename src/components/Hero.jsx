@@ -253,6 +253,7 @@ const Hero = ({ isLoaded, setIsLoaded, onSignup, setActivePlatform }) => {
                                     <div
                                         className="absolute top-[35%] left-[20%] w-[15%] h-[15%] pointer-events-auto cursor-pointer animate-icon-vibrate z-30 group"
                                         onClick={() => {
+                                            window.open('https://whatsapp-automation-swart.vercel.app/login', '_blank');
                                             setActivePlatform('WhatsApp');
                                             slowScrollToCTA();
                                         }}
@@ -269,6 +270,7 @@ const Hero = ({ isLoaded, setIsLoaded, onSignup, setActivePlatform }) => {
                                     <div
                                         className="absolute top-[38%] left-[42%] w-[18%] h-[18%] pointer-events-auto cursor-pointer animate-icon-vibrate-delayed z-30 group"
                                         onClick={() => {
+                                            window.open('https://instaflow-1-8a6r.onrender.com', '_blank');
                                             setActivePlatform('Instagram');
                                             slowScrollToCTA();
                                         }}
